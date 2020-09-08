@@ -27,5 +27,21 @@
  * @return {string}
  */
 var freqAlphabets = function (s) {
+     const CHAR_CODE_OFFSET = 96;
+     let solStr = '';
 
+     for (let i = 0; i < s.length; i++) {
+          let currNumber = s[i];
+
+          if (s[i + 2] === '#') {
+               // for example 1, currNumber is now 10
+               currNumber = s.slice(i, i + 2);
+               i += 2;
+          }
+
+          // to get letter from currNumber, add to char code offset to get the char code and conver to string
+          solStr += String.fromCharCode(parseInt(currNumber) + CHAR_CODE_OFFSET);
+     }
+
+     return solStr;
 };
